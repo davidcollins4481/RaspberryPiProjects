@@ -1,5 +1,6 @@
 from jabberbot import JabberBot, botcmd
 import datetime
+import temperature
 
 class SystemInfoJabberBot(JabberBot):
     @botcmd
@@ -24,7 +25,12 @@ class SystemInfoJabberBot(JabberBot):
     def whoami(self, mess, args):
         """Tells you your username"""
         return mess.getFrom().getStripped()
- 
+
+    @botcmd
+    def temperature(self, mess, args):
+        """Get the temperature of the room where the Raspberry Pi is located"""
+        return temperature.temperature()
+
 username = 'threefourfivepoplar@gmail.com'
 password = '###'
 bot = SystemInfoJabberBot(username,password)
